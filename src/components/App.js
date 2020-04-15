@@ -4,25 +4,47 @@ import Navbar from './layout/Navbar';
 import Home from './pages/Home';
 import AddQuestion from './pages/AddQuestion';
 import Leaderboard from './pages/Leaderboard';
-import { _getQuestions, _getUsers } from '../_DATA';
+import NotFound from './pages/NotFound';
 import { Switch, Route } from 'react-router-dom';
+import * as API from '../utils/api';
+import Spinner from './layout/Spinner';
+import Login from './user/Login';
 
 function App() {
   const [user, setUser] = useState('');
   const [users, setUsers] = useState(null);
-  const [questions, setquestions] = useState(null);
+  const [questions, setQuestions] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    async function getInitialData() {
+      const initialData = await API.getInitialData();
+      const { users, questions } = initialData;
+      setUsers(users);
+      setQuestions(questions);
+      setLoading(false);
+    }
+
+    getInitialData();
+  }, []);
 
   return (
     <>
-      <Navbar loggedInUser={user} />
+      <Navbar loggedInUser={user} setUser={setUser} />
+
       <div className="container mt-5">
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/add" component={AddQuestion} />
-          <Route exact path="/leaderboard" component={Leaderboard} />
-        </Switch>
+        {loading ? (
+          <Spinner />
+        ) : !user ? (
+          <Login setUser={setUser} users={users} />
+        ) : (
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/add" component={AddQuestion} />
+            <Route exact path="/leaderboard" component={Leaderboard} />
+            <Route component={NotFound} />
+          </Switch>
+        )}
       </div>
     </>
   );
