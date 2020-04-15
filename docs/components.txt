@@ -1,0 +1,58 @@
+==============================
+ Would you rather - React App
+==============================
+
+<App>
+
+<Navbar>
+	<User />
+</Navbar>
+
+<Routes / Pages>
+	<Home route="/">
+		<Login />
+		<Questions>
+			<Question />
+		</Questions>
+	</Home>
+	
+	<AddQuestion route="/add" />
+		<Login />
+	</AddQuestion>
+	
+	<Leaderboard route="/leaderboard" />
+		<Login />
+		<UserScoreCard />
+	</Leaderboard>
+</Routes / Pages>
+
+</App>
+
+======= Required Pages =======
+- Home 		   (Route "/")
+- New Question (Route "/add")
+- Leaderboard  (Route "/leaderboard")
+
+===== Required Components ====
+* Navbar Component
+-- NavItem "Home" (<Link> to "/")
+-- NavItem "New Question" (<Link> to "/add")
+-- NavItem "Leaderboard" (<Link> to "/leaderboard")
+-* UserComponent - only shown when user is authenticated; depicts "Hello, <username>" + avatarImg
+-- NavItem Logout - only shown when user is authenticated
+
+* Login Component
+-- h2 "Welcome to the Would You Rather App"
+-- h3/p "Please sign in to continue"
+-- Logo / Icon
+-- h2 "Sign In"
+-- DropDown => Choose user to login
+-- "Sign In"-Button
+
+* Questions-Component
+-- Shows all questions (Container for multiple Question-Components)
+-- Filtered by answered/unanswered by user
+
+* Question-Component
+-- Shows either question and answer option / results based on state
+
