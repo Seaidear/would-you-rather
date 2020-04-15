@@ -2,40 +2,40 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: ,
+    avatarURL: 'https://tylermcginnis.com/would-you-rather/sarah.jpg',
     answers: {
-      "8xf0y6ziyjabvozdd253nd": 'optionOne',
-      "6ni6ok3ym7mf1p33lnez": 'optionTwo',
-      "am8ehyc8byjqgar0jgpub9": 'optionTwo',
-      "loxhs1bqm25b708cmbf3g": 'optionTwo'
+      '8xf0y6ziyjabvozdd253nd': 'optionOne',
+      '6ni6ok3ym7mf1p33lnez': 'optionTwo',
+      am8ehyc8byjqgar0jgpub9: 'optionTwo',
+      loxhs1bqm25b708cmbf3g: 'optionTwo',
     },
-    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
+    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9'],
   },
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: ,
+    avatarURL: 'https://tylermcginnis.com/would-you-rather/tyler.jpg',
     answers: {
-      "vthrdm985a262al8qx3do": 'optionOne',
-      "xj352vofupe1dqz9emx13r": 'optionTwo',
+      vthrdm985a262al8qx3do: 'optionOne',
+      xj352vofupe1dqz9emx13r: 'optionTwo',
     },
     questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
   },
   johndoe: {
-    id: 'johndoe',
-    name: 'John Doe',
-    avatarURL: ,
+    id: 'danabramov',
+    name: 'Dan Abramov',
+    avatarURL: 'https://tylermcginnis.com/would-you-rather/dan.jpg',
     answers: {
-      "xj352vofupe1dqz9emx13r": 'optionOne',
-      "vthrdm985a262al8qx3do": 'optionTwo',
-      "6ni6ok3ym7mf1p33lnez": 'optionTwo'
+      xj352vofupe1dqz9emx13r: 'optionOne',
+      vthrdm985a262al8qx3do: 'optionTwo',
+      '6ni6ok3ym7mf1p33lnez': 'optionTwo',
     },
     questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
-  }
-}
+  },
+};
 
 let questions = {
-  "8xf0y6ziyjabvozdd253nd": {
+  '8xf0y6ziyjabvozdd253nd': {
     id: '8xf0y6ziyjabvozdd253nd',
     author: 'sarahedo',
     timestamp: 1467166872634,
@@ -45,10 +45,10 @@ let questions = {
     },
     optionTwo: {
       votes: [],
-      text: 'have horrible long term memory'
-    }
+      text: 'have horrible long term memory',
+    },
   },
-  "6ni6ok3ym7mf1p33lnez": {
+  '6ni6ok3ym7mf1p33lnez': {
     id: '6ni6ok3ym7mf1p33lnez',
     author: 'johndoe',
     timestamp: 1468479767190,
@@ -58,10 +58,10 @@ let questions = {
     },
     optionTwo: {
       votes: ['johndoe', 'sarahedo'],
-      text: 'become a supervillain'
-    }
+      text: 'become a supervillain',
+    },
   },
-  "am8ehyc8byjqgar0jgpub9": {
+  am8ehyc8byjqgar0jgpub9: {
     id: 'am8ehyc8byjqgar0jgpub9',
     author: 'sarahedo',
     timestamp: 1488579767190,
@@ -71,10 +71,10 @@ let questions = {
     },
     optionTwo: {
       votes: ['sarahedo'],
-      text: 'be telepathic'
-    }
+      text: 'be telepathic',
+    },
   },
-  "loxhs1bqm25b708cmbf3g": {
+  loxhs1bqm25b708cmbf3g: {
     id: 'loxhs1bqm25b708cmbf3g',
     author: 'tylermcginnis',
     timestamp: 1482579767190,
@@ -84,10 +84,10 @@ let questions = {
     },
     optionTwo: {
       votes: ['sarahedo'],
-      text: 'be a back-end developer'
-    }
+      text: 'be a back-end developer',
+    },
   },
-  "vthrdm985a262al8qx3do": {
+  vthrdm985a262al8qx3do: {
     id: 'vthrdm985a262al8qx3do',
     author: 'tylermcginnis',
     timestamp: 1489579767190,
@@ -97,10 +97,10 @@ let questions = {
     },
     optionTwo: {
       votes: ['johndoe'],
-      text: 'have your best friend find $500'
-    }
+      text: 'have your best friend find $500',
+    },
   },
-  "xj352vofupe1dqz9emx13r": {
+  xj352vofupe1dqz9emx13r: {
     id: 'xj352vofupe1dqz9emx13r',
     author: 'johndoe',
     timestamp: 1493579767190,
@@ -110,28 +110,31 @@ let questions = {
     },
     optionTwo: {
       votes: ['tylermcginnis'],
-      text: 'write Swift'
-    }
+      text: 'write Swift',
+    },
   },
+};
+
+function generateUID() {
+  return (
+    Math.random().toString(36).substring(2, 15) +
+    Math.random().toString(36).substring(2, 15)
+  );
 }
 
-function generateUID () {
-  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
-}
-
-export function _getUsers () {
+export function _getUsers() {
   return new Promise((res, rej) => {
-    setTimeout(() => res({...users}), 1000)
-  })
+    setTimeout(() => res({ ...users }), 1000);
+  });
 }
 
-export function _getQuestions () {
+export function _getQuestions() {
   return new Promise((res, rej) => {
-    setTimeout(() => res({...questions}), 1000)
-  })
+    setTimeout(() => res({ ...questions }), 1000);
+  });
 }
 
-function formatQuestion ({ optionOneText, optionTwoText, author }) {
+function formatQuestion({ optionOneText, optionTwoText, author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
@@ -143,11 +146,11 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
     optionTwo: {
       votes: [],
       text: optionTwoText,
-    }
-  }
+    },
+  };
 }
 
-export function _saveQuestion (question) {
+export function _saveQuestion(question) {
   return new Promise((res, rej) => {
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
@@ -155,23 +158,23 @@ export function _saveQuestion (question) {
     setTimeout(() => {
       questions = {
         ...questions,
-        [formattedQuestion.id]: formattedQuestion
-      }
-      
+        [formattedQuestion.id]: formattedQuestion,
+      };
+
       users = {
         ...users,
         [authedUser]: {
           ...users[authedUser],
-          questions: users[authedUser].questions.concat([formattedQuestion.id])
-        }
-      }
+          questions: users[authedUser].questions.concat([formattedQuestion.id]),
+        },
+      };
 
-      res(formattedQuestion)
-    }, 1000)
-  })
+      res(formattedQuestion);
+    }, 1000);
+  });
 }
 
-export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
+export function _saveQuestionAnswer({ authedUser, qid, answer }) {
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
@@ -180,10 +183,10 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           ...users[authedUser],
           answers: {
             ...users[authedUser].answers,
-            [qid]: answer
-          }
-        }
-      }
+            [qid]: answer,
+          },
+        },
+      };
 
       questions = {
         ...questions,
@@ -191,12 +194,12 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           ...questions[qid],
           [answer]: {
             ...questions[qid][answer],
-            votes: questions[qid][answer].votes.concat([authedUser])
-          }
-        }
-      }
+            votes: questions[qid][answer].votes.concat([authedUser]),
+          },
+        },
+      };
 
-      res()
-    }, 500)
-  })
+      res();
+    }, 500);
+  });
 }
