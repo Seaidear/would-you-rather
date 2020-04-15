@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-md navbar-dark bg-primary">
       <Link className="navbar-brand" to="/">
         <svg
           class="bi bi-question-square-fill"
@@ -51,6 +51,9 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
+        <button type="button" class="btn btn-dark">
+          Logout
+        </button>
       </div>
     </nav>
   );
