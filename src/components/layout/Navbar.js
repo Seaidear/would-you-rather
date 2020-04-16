@@ -77,7 +77,7 @@ const Navbar = ({ loggedInUser, setUser, users }) => {
 
 Navbar.propTypes = {
   loggedInUser: PropTypes.string.isRequired,
-  users: PropTypes.object.isRequired,
+  users: PropTypes.object,
   setUser: PropTypes.func.isRequired,
 };
 

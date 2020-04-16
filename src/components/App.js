@@ -11,8 +11,8 @@ import Spinner from './layout/Spinner';
 import Login from './user/Login';
 
 function App() {
-  const [user, setUser] = useState('');
-  const [users, setUsers] = useState({});
+  const [user, setUser] = useState('sarahedo');
+  const [users, setUsers] = useState(null);
   const [questions, setQuestions] = useState({});
   const [loading, setLoading] = useState(true);
 

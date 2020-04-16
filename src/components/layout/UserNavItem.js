@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const UserNavItem = ({ loggedInUser, users }) => {
+  if (!users) return null;
+
   const user = loggedInUser && users[loggedInUser];
   return (
     <>
@@ -28,7 +30,7 @@ const UserNavItem = ({ loggedInUser, users }) => {
 
 UserNavItem.propTypes = {
   loggedInUser: PropTypes.string.isRequired,
-  users: PropTypes.object.isRequired,
+  users: PropTypes.object,
 };
 
 export default UserNavItem;
