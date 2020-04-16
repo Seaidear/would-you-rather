@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const AddQuestion = ({ addQuestion }) => {
   const [optionOneText, setOptionOneText] = useState('');
   const [optionTwoText, setOptionTwoText] = useState('');
+  const [questionSubmitted, setQuestionSubmitted] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
     addQuestion({ optionOneText, optionTwoText });
+    setQuestionSubmitted(true);
   };
+
+  if (questionSubmitted) return <Redirect to="/" />;
 
   return (
     <div
