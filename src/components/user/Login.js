@@ -5,7 +5,10 @@ const Login = ({ users, setUser }) => {
   const [selectedUser, setSelectedUser] = useState('');
 
   return (
-    <div className="text-center mx-auto mt-5 w-50">
+    <div
+      className="text-center mx-auto mt-5 card p-5"
+      style={{ width: '65vw', minWidth: '320px', maxWidth: '768px' }}
+    >
       <form
         className="form-signin"
         onSubmit={(e) => {
