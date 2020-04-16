@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const AddQuestion = () => {
+const AddQuestion = ({ addQuestion }) => {
+  const [optionOneText, setOptionOneText] = useState('');
+  const [optionTwoText, setOptionTwoText] = useState('');
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    addQuestion({ optionOneText, optionTwoText });
+  };
+
   return (
     <div
       className="card p-5 mx-auto"
@@ -11,7 +20,7 @@ const AddQuestion = () => {
         <strong>Complete the question:</strong>
       </p>
       <h3 className="text-center mt-3">Would you rather...</h3>
-      <form>
+      <form onSubmit={onSubmit}>
         <div className="input-group mb-3">
           <div className="input-group-prepend">
             <span className="input-group-text">Option 1</span>
@@ -20,6 +29,8 @@ const AddQuestion = () => {
             type="text"
             className="form-control"
             placeholder="Enter Option One Text Here"
+            value={optionOneText}
+            onChange={(e) => setOptionOneText(e.target.value)}
             required
           />
         </div>
@@ -34,6 +45,8 @@ const AddQuestion = () => {
             type="text"
             className="form-control"
             placeholder="Enter Option Two Text Here"
+            value={optionTwoText}
+            onChange={(e) => setOptionTwoText(e.target.value)}
             required
           />
         </div>
@@ -44,6 +57,10 @@ const AddQuestion = () => {
       </form>
     </div>
   );
+};
+
+AddQuestion.propTypes = {
+  addQuestion: PropTypes.func.isRequired,
 };
 
 export default AddQuestion;
