@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import UserNavItem from './UserNavItem';
 
-const Navbar = ({ loggedInUser, setUser }) => {
+const Navbar = ({ loggedInUser, setUser, users }) => {
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <Link className="navbar-brand" to="/">
         <svg
           className="bi bi-question-square-fill"
@@ -23,6 +24,7 @@ const Navbar = ({ loggedInUser, setUser }) => {
         <span style={{ display: 'inline-block', width: '1em' }} />
         Would you rather?
       </Link>
+
       <button
         className="navbar-toggler"
         type="button"
@@ -34,8 +36,15 @@ const Navbar = ({ loggedInUser, setUser }) => {
       >
         <span className="navbar-toggler-icon" />
       </button>
-      <div className="collapse navbar-collapse" id="navbarsExample04">
-        <ul className="navbar-nav ml-auto">
+
+      <div
+        className="collapse navbar-collapse justify-content-end"
+        id="navbarsExample04"
+      >
+        {loggedInUser && (
+          <UserNavItem loggedInUser={loggedInUser} users={users} />
+        )}
+        <ul className="navbar-nav">
           <li className="nav-item active">
             <Link className="nav-link" to="/">
               Home
@@ -52,7 +61,7 @@ const Navbar = ({ loggedInUser, setUser }) => {
             </Link>
           </li>
         </ul>
-        {loggedInUser !== '' && (
+        {loggedInUser && (
           <button
             type="button"
             className="btn btn-dark"
@@ -68,6 +77,7 @@ const Navbar = ({ loggedInUser, setUser }) => {
 
 Navbar.propTypes = {
   loggedInUser: PropTypes.string.isRequired,
+  users: PropTypes.object.isRequired,
   setUser: PropTypes.func.isRequired,
 };
 

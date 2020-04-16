@@ -12,8 +12,8 @@ import Login from './user/Login';
 
 function App() {
   const [user, setUser] = useState('');
-  const [users, setUsers] = useState(null);
-  const [questions, setQuestions] = useState(null);
+  const [users, setUsers] = useState({});
+  const [questions, setQuestions] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function App() {
 
   return (
     <>
-      <Navbar loggedInUser={user} setUser={setUser} />
+      <Navbar loggedInUser={user} setUser={setUser} users={users} />
 
       <div className="container mt-5">
         {loading ? (
