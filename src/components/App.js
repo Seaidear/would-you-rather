@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './layout/Navbar';
 import Home from './pages/Home';
 import AddQuestion from './pages/AddQuestion';
 import Leaderboard from './pages/Leaderboard';
 import NotFound from './pages/NotFound';
 import { Switch, Route } from 'react-router-dom';
-import * as API from '../utils/api';
 import Spinner from './layout/Spinner';
 import Login from './user/Login';
+
+import * as API from '../utils/api';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [user, setUser] = useState('sarahedo');
