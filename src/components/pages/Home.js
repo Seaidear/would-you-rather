@@ -46,7 +46,7 @@ const Home = ({ questions, users, user }) => {
           >
             {Object.values(questions)
               .filter((question) => {
-                return users[user].answers[question.id];
+                return !users[user].answers[question.id];
               })
               .map((question) => {
                 question.authorName = users[question.author].name;
@@ -62,7 +62,7 @@ const Home = ({ questions, users, user }) => {
           >
             {Object.values(questions)
               .filter((question) => {
-                return !users[user].answers[question.id];
+                return users[user].answers[question.id];
               })
               .map((question) => {
                 question.authorName = users[question.author].name;
