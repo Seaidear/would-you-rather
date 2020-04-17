@@ -34,6 +34,11 @@ function App() {
     setLoading(true);
     const initialData = await API.getInitialData();
     const { users, questions } = initialData;
+    Object.values(users).forEach((user) => {
+      user.numberOfQuestions = Object.values(user.answers).length;
+      user.numberOfAnswers = user.questions.length;
+      user.score = user.numberOfQuestions + user.numberOfAnswers;
+    });
     setUsers(users);
     setQuestions(questions);
     setLoading(false);
@@ -49,15 +54,21 @@ function App() {
           <Login setUser={setUser} users={users} />
         ) : (
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/"
+              render={() => <Home questions={questions} />}
+            />
             <Route
               exact
               path="/add"
-              render={() => {
-                return <AddQuestion addQuestion={addQuestion} />;
-              }}
+              render={() => <AddQuestion addQuestion={addQuestion} />}
             />
-            <Route exact path="/leaderboard" component={Leaderboard} />
+            <Route
+              exact
+              path="/leaderboard"
+              render={() => <Leaderboard users={users} />}
+            />
             <Route component={NotFound} />
           </Switch>
         )}
