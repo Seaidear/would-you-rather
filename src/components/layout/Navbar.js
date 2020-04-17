@@ -52,7 +52,7 @@ const Navbar = ({ loggedInUser, setUser, users }) => {
           </li>
           <li className="nav-item active">
             <Link className="nav-link" to="/add">
-              New Question
+              Add Question
             </Link>
           </li>
           <li className="nav-item active">
