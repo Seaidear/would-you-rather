@@ -3,7 +3,6 @@ import UserScoreCard from '../user/UserScoreCard';
 import PropTypes from 'prop-types';
 
 const Leaderboard = ({ users }) => {
-  console.log(users);
   return (
     <div
       className="card p-5 mx-auto"
