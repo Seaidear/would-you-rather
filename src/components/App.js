@@ -10,6 +10,7 @@ import Login from './user/Login';
 
 import * as API from '../utils/api';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Poll from './pages/Poll';
 
 function App() {
   const [user, setUser] = useState('sarahedo');
@@ -30,13 +31,18 @@ function App() {
     await getDatafromApi();
   };
 
+  const saveAnswer = async ({ authedUser, qid, answer }) => {
+    await API.saveQuestionAnswer({ authedUser, qid, answer });
+    await getDatafromApi();
+  };
+
   async function getDatafromApi() {
     setLoading(true);
     const initialData = await API.getInitialData();
     const { users, questions } = initialData;
     Object.values(users).forEach((user) => {
-      user.numberOfQuestions = Object.values(user.answers).length;
-      user.numberOfAnswers = user.questions.length;
+      user.numberOfAnswers = Object.values(user.answers).length;
+      user.numberOfQuestions = user.questions.length;
       user.score = user.numberOfQuestions + user.numberOfAnswers;
     });
     setUsers(users);
@@ -70,6 +76,19 @@ function App() {
               exact
               path="/leaderboard"
               render={() => <Leaderboard users={users} />}
+            />
+
+            <Route
+              exact
+              path="/poll/:id"
+              render={() => (
+                <Poll
+                  questions={questions}
+                  users={users}
+                  user={user}
+                  saveAnswer={saveAnswer}
+                />
+              )}
             />
             <Route component={NotFound} />
           </Switch>
