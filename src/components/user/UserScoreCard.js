@@ -6,7 +6,7 @@ const UserScoreCard = ({
   placing,
 }) => {
   return (
-    <div className="card mb-3 p-3 mx-auto" style={{ maxWidth: '540px' }}>
+    <div className="card mb-3 p-3 mx-auto">
       <h3 className="card-title text-center my-0">
         {name} is #{placing}
       </h3>
