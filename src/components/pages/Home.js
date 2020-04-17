@@ -48,6 +48,9 @@ const Home = ({ questions, users, user }) => {
               .filter((question) => {
                 return !users[user].answers[question.id];
               })
+              .sort((a, b) => {
+                return b.timestamp - a.timestamp;
+              })
               .map((question) => {
                 question.authorName = users[question.author].name;
                 question.authorAvatarURL = users[question.author].avatarURL;
