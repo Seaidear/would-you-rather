@@ -5,9 +5,10 @@ import PollCard from '../polls/PollCard';
 const Home = ({ questions, users, user }) => {
   return (
     <div
-      className="card p-5 mx-auto"
+      className="card p-3 mx-auto"
       style={{ width: '65vw', minWidth: '320px', maxWidth: '768px' }}
     >
+      <h2 className="mb-5 text-center">Poll Overview</h2>
       <div>
         <ul className="nav nav-tabs" id="myTab" role="tablist">
           <li className="nav-item">

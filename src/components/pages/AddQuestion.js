@@ -17,7 +17,7 @@ const AddQuestion = ({ addQuestion }) => {
 
   return (
     <div
-      className="card p-5 mx-auto"
+      className="card p-3 mx-auto"
       style={{ width: '65vw', minWidth: '320px', maxWidth: '768px' }}
     >
       <h2 className="mb-5 text-center">Create New Question</h2>

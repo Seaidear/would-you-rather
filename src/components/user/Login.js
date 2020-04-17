@@ -6,7 +6,7 @@ const Login = ({ users, setUser }) => {
 
   return (
     <div
-      className="text-center mx-auto mt-5 card p-5"
+      className="text-center mx-auto mt-3 card p-3"
       style={{ width: '65vw', minWidth: '320px', maxWidth: '768px' }}
     >
       <form
