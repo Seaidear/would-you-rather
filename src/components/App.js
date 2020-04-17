@@ -57,7 +57,9 @@ function App() {
             <Route
               exact
               path="/"
-              render={() => <Home questions={questions} />}
+              render={() => (
+                <Home questions={questions} users={users} user={user} />
+              )}
             />
             <Route
               exact

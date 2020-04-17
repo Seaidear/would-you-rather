@@ -50,14 +50,14 @@ let questions = {
   },
   '6ni6ok3ym7mf1p33lnez': {
     id: '6ni6ok3ym7mf1p33lnez',
-    author: 'johndoe',
+    author: 'danabramov',
     timestamp: 1468479767190,
     optionOne: {
       votes: [],
       text: 'become a superhero',
     },
     optionTwo: {
-      votes: ['johndoe', 'sarahedo'],
+      votes: ['danabramov', 'sarahedo'],
       text: 'become a supervillain',
     },
   },
@@ -96,16 +96,16 @@ let questions = {
       text: 'find $50 yourself',
     },
     optionTwo: {
-      votes: ['johndoe'],
+      votes: ['danabramov'],
       text: 'have your best friend find $500',
     },
   },
   xj352vofupe1dqz9emx13r: {
     id: 'xj352vofupe1dqz9emx13r',
-    author: 'johndoe',
+    author: 'danabramov',
     timestamp: 1493579767190,
     optionOne: {
-      votes: ['johndoe'],
+      votes: ['danabramov'],
       text: 'write JavaScript',
     },
     optionTwo: {
