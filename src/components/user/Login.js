@@ -61,7 +61,7 @@ const Login = ({ users, setUser }) => {
           <button
             className="btn btn-lg btn-primary btn-block"
             type="submit"
-            disabled={!selectedUser}
+            // disabled={!selectedUser}
           >
             Sign in
           </button>
