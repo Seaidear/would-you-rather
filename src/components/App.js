@@ -84,7 +84,7 @@ function App() {
 
             <Route
               exact
-              path="/poll/:id"
+              path="/questions/:id"
               render={() => (
                 <PollPage
                   questions={questions}

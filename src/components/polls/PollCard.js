@@ -21,7 +21,7 @@ const PollCard = ({ question }) => {
             <h4 className="text-left mb-3">Would you rather</h4>
             <p className="card-text">...{question.optionOne.text}...</p>
             <Link
-              to={`/poll/${question.id}`}
+              to={`/questions/${question.id}`}
               className="btn btn-outline-primary btn-block"
             >
               View Poll
