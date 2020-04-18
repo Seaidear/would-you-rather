@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, Redirect } from 'react-router-dom';
 import PageContainer from '../layout/shared/PageContainer';
+import Card from '../layout/shared/Card';
 
 const PollPage = ({ questions, users, user, saveAnswer, match }) => {
   const [selectedAnswer, setSelectedAnswer] = useState('optionOne');
@@ -32,152 +33,124 @@ const PollPage = ({ questions, users, user, saveAnswer, match }) => {
   if (isQuestionAlreadyAnswered)
     return (
       <PageContainer>
-        <div className="card mb-3 p-3 mx-auto">
-          <h3 className="card-title text-left mb-3">
-            Asked by {question.authorName}
-          </h3>
-          <div className="row no-gutters">
-            <div className="col-md-3 p-3 text-center">
-              <img
-                src={question.authorAvatarURL}
-                className="card-img rounded-circle"
-                alt={question.authorName}
-                style={{ maxWidth: '150px', maxHeight: '150px' }}
-              />
-            </div>
-            <div className="col-md-9">
-              <div className="card-body p-3">
-                <h4 className="text-left mb-3">Results:</h4>
-                <div className="card p-2" style={getStyle('optionOne')}>
-                  <p>
-                    <strong>Would you rather {question.optionOne.text}?</strong>
-                  </p>
-                  <div className="progress">
-                    <div
-                      className="progress-bar"
-                      role="progressbar"
-                      style={{ width: `${percentageOptionOne}%` }}
-                      aria-valuenow={percentageOptionOne}
-                      aria-valuemin={0}
-                      aria-valuemax={100}
-                    >
-                      {percentageOptionOne}%
-                    </div>
+        <Card
+          headerText={`Asked by ${question.authorName}`}
+          imageURL={question.authorAvatarURL}
+        >
+          <div className="col-md-9">
+            <div className="card-body p-3">
+              <h4 className="text-left mb-3">Results:</h4>
+              <div className="card p-2" style={getStyle('optionOne')}>
+                <p>
+                  <strong>Would you rather {question.optionOne.text}?</strong>
+                </p>
+                <div className="progress">
+                  <div
+                    className="progress-bar"
+                    role="progressbar"
+                    style={{ width: `${percentageOptionOne}%` }}
+                    aria-valuenow={percentageOptionOne}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                  >
+                    {percentageOptionOne}%
                   </div>
-                  <p>
-                    <small>
-                      {question.optionOne.votes.length} out of {totalVotes}{' '}
-                      votes
-                    </small>
-                  </p>
                 </div>
-                <div className="card p-3" style={getStyle('optionTwo')}>
-                  <p>
-                    <strong>Would you rather {question.optionTwo.text}?</strong>
-                  </p>
-                  <div className="progress">
-                    <div
-                      className="progress-bar"
-                      role="progressbar"
-                      style={{ width: `${percentageOptionTwo}%` }}
-                      aria-valuenow={percentageOptionTwo}
-                      aria-valuemin={0}
-                      aria-valuemax={100}
-                    >
-                      {percentageOptionTwo}%
-                    </div>
+                <p>
+                  <small>
+                    {question.optionOne.votes.length} out of {totalVotes} votes
+                  </small>
+                </p>
+              </div>
+              <div className="card p-3" style={getStyle('optionTwo')}>
+                <p>
+                  <strong>Would you rather {question.optionTwo.text}?</strong>
+                </p>
+                <div className="progress">
+                  <div
+                    className="progress-bar"
+                    role="progressbar"
+                    style={{ width: `${percentageOptionTwo}%` }}
+                    aria-valuenow={percentageOptionTwo}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                  >
+                    {percentageOptionTwo}%
                   </div>
-                  <p>
-                    <small>
-                      {question.optionTwo.votes.length} out of {totalVotes}{' '}
-                      votes
-                    </small>
-                  </p>
                 </div>
+                <p>
+                  <small>
+                    {question.optionTwo.votes.length} out of {totalVotes} votes
+                  </small>
+                </p>
               </div>
             </div>
           </div>
-        </div>
+        </Card>
       </PageContainer>
     );
   else
     return (
       <PageContainer headerText="">
-        <div className="card mb-3 p-3 mx-auto">
-          <h3 className="card-title text-left mb-3">
-            {question.authorName} asks:
-          </h3>
-          <div className="row no-gutters">
-            <div className="col-md-3 p-3 text-center">
-              <img
-                src={question.authorAvatarURL}
-                className="card-img rounded-circle"
-                alt={question.authorName}
-                style={{ maxWidth: '150px', maxHeight: '150px' }}
-              />
-            </div>
-            <div className="col-md-9">
-              <div className="card-body p-3">
-                <h4 className="text-left mb-3">Would you rather...</h4>
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
+        <Card
+          headerText={`${question.authorName} asks:`}
+          imageURL={question.authorAvatarURL}
+        >
+          <div className="col-md-9">
+            <div className="card-body p-3">
+              <h4 className="text-left mb-3">Would you rather...</h4>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
 
-                    saveAnswer({
-                      authedUser: user,
-                      qid: question.id,
-                      answer: selectedAnswer,
-                    });
-                  }}
-                >
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="exampleRadios"
-                      id="exampleRadios1"
-                      value="optionOne"
-                      checked={selectedAnswer === 'optionOne'}
-                      onChange={(e) => {
-                        setSelectedAnswer(e.target.value);
-                      }}
-                    />
-                    <label
-                      className="form-check-label"
-                      htmlFor="exampleRadios1"
-                    >
-                      {question.optionOne.text}
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="exampleRadios"
-                      id="exampleRadios2"
-                      value="optionTwo"
-                      checked={selectedAnswer === 'optionTwo'}
-                      onChange={(e) => {
-                        setSelectedAnswer(e.target.value);
-                      }}
-                    />
-                    <label
-                      className="form-check-label"
-                      htmlFor="exampleRadios2"
-                    >
-                      {question.optionTwo.text}
-                    </label>
-                  </div>
+                  saveAnswer({
+                    authedUser: user,
+                    qid: question.id,
+                    answer: selectedAnswer,
+                  });
+                }}
+              >
+                <div className="form-check">
                   <input
-                    type="submit"
-                    value="Submit Your Answer"
-                    className="btn btn-primary btn-block mt-3"
+                    className="form-check-input"
+                    type="radio"
+                    name="exampleRadios"
+                    id="exampleRadios1"
+                    value="optionOne"
+                    checked={selectedAnswer === 'optionOne'}
+                    onChange={(e) => {
+                      setSelectedAnswer(e.target.value);
+                    }}
                   />
-                </form>
-              </div>
+                  <label className="form-check-label" htmlFor="exampleRadios1">
+                    {question.optionOne.text}
+                  </label>
+                </div>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="exampleRadios"
+                    id="exampleRadios2"
+                    value="optionTwo"
+                    checked={selectedAnswer === 'optionTwo'}
+                    onChange={(e) => {
+                      setSelectedAnswer(e.target.value);
+                    }}
+                  />
+                  <label className="form-check-label" htmlFor="exampleRadios2">
+                    {question.optionTwo.text}
+                  </label>
+                </div>
+                <input
+                  type="submit"
+                  value="Submit Your Answer"
+                  className="btn btn-primary btn-block mt-3"
+                />
+              </form>
             </div>
           </div>
-        </div>
+        </Card>
       </PageContainer>
     );
 };
