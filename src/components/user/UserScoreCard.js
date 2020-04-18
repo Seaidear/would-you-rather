@@ -12,11 +12,16 @@ const UserScoreCard = ({
       </h3>
       <div className="row no-gutters">
         <div className="col-md-3 p-3 text-center">
-          <img src={avatarURL} className="card-img rounded-circle" alt={name} style={{ maxWidth: '150px', maxHeight: '150px' }}/>
+          <img
+            src={avatarURL}
+            className="card-img rounded-circle"
+            alt={name}
+            style={{ maxWidth: '150px', maxHeight: '150px' }}
+          />
         </div>
         <div className="col-md-9">
           <div className="row">
-            <div className="card-body col-md-8">
+            <div className="card-body p-3 col-md-8">
               <div style={{ display: 'flex', alignSelf: 'center' }}>
                 <p className="card-text w-75">Answered Questions</p>
                 <p className="card-text w-25 text-right">

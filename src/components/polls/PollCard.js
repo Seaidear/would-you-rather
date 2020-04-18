@@ -8,7 +8,7 @@ const PollCard = ({ question }) => {
     <div className="card mb-3 p-3 mx-auto">
       <h3 className="card-title text-left mb-3">{question.authorName} asks:</h3>
       <div className="row no-gutters">
-        <div className="col-md-3 p-3 text-center">
+        <div className="col-md-3 p-1 text-center">
           <img
             src={question.authorAvatarURL}
             className="card-img rounded-circle"
@@ -17,7 +17,7 @@ const PollCard = ({ question }) => {
           />
         </div>
         <div className="col-md-9">
-          <div className="card-body">
+          <div className="card-body p-3">
             <h4 className="text-left mb-3">Would you rather</h4>
             <p className="card-text">...{question.optionOne.text}...</p>
             <Link

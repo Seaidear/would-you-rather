@@ -46,9 +46,9 @@ const PollPage = ({ questions, users, user, saveAnswer, match }) => {
               />
             </div>
             <div className="col-md-9">
-              <div className="card-body">
+              <div className="card-body p-3">
                 <h4 className="text-left mb-3">Results:</h4>
-                <div className="card p-3" style={getStyle('optionOne')}>
+                <div className="card p-2" style={getStyle('optionOne')}>
                   <p>
                     <strong>Would you rather {question.optionOne.text}?</strong>
                   </p>
@@ -117,7 +117,7 @@ const PollPage = ({ questions, users, user, saveAnswer, match }) => {
               />
             </div>
             <div className="col-md-9">
-              <div className="card-body">
+              <div className="card-body p-3">
                 <h4 className="text-left mb-3">Would you rather...</h4>
                 <form
                   onSubmit={(e) => {
