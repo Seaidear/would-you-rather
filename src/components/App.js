@@ -23,9 +23,8 @@ function App() {
     async function getInitialData() {
       await getDatafromApi();
     }
-    setLoading(true);
+
     getInitialData();
-    setLoading(false);
   }, []);
 
   const addQuestion = async (question) => {
@@ -43,6 +42,7 @@ function App() {
   };
 
   async function getDatafromApi() {
+    setLoading(true);
     const initialData = await API.getInitialData();
     const { users, questions } = initialData;
 
@@ -59,6 +59,7 @@ function App() {
 
     setUsers(users);
     setQuestions(questions);
+    setLoading(false);
   }
   return (
     <>
