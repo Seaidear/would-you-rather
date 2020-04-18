@@ -4,6 +4,15 @@ import PollCard from '../polls/PollCard';
 import PageContainer from '../layout/PageContainer';
 
 const Home = ({ questions, users, user }) => {
+  const answeredQuestions = filterAndSortQuestions(
+    questions,
+    (question) => users[user].answers[question.id],
+  );
+  const unansweredQuestions = filterAndSortQuestions(
+    questions,
+    (question) => !users[user].answers[question.id],
+  );
+
   return (
     <PageContainer headerText="Poll Overview">
       <div>
@@ -47,16 +56,7 @@ const Home = ({ questions, users, user }) => {
             role="tabpanel"
             aria-labelledby="unanswered-tab"
           >
-            {Object.values(questions)
-              .filter((question) => {
-                return !users[user].answers[question.id];
-              })
-              .sort((a, b) => {
-                return b.timestamp - a.timestamp;
-              })
-              .map((question) => {
-                return <PollCard key={question.id} question={question} />;
-              })}
+            {unansweredQuestions}
           </div>
           <div
             className="tab-pane fade"
@@ -64,18 +64,7 @@ const Home = ({ questions, users, user }) => {
             role="tabpanel"
             aria-labelledby="answered-tab"
           >
-            {Object.values(questions)
-              .filter((question) => {
-                return users[user].answers[question.id];
-              })
-              .sort((a, b) => {
-                return b.timestamp - a.timestamp;
-              })
-              .map((question) => {
-                question.authorName = users[question.author].name;
-                question.authorAvatarURL = users[question.author].avatarURL;
-                return <PollCard key={question.id} question={question} />;
-              })}
+            {answeredQuestions}
           </div>
         </div>
       </div>
@@ -88,5 +77,11 @@ Home.propTypes = {
   users: PropTypes.object.isRequired,
   user: PropTypes.string.isRequired,
 };
+
+const filterAndSortQuestions = (questions, filterFn) =>
+  Object.values(questions)
+    .filter((question) => filterFn(question))
+    .sort((a, b) => b.timestamp - a.timestamp)
+    .map((question) => <PollCard key={question.id} question={question} />);
 
 export default Home;
