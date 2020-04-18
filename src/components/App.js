@@ -12,6 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 import * as API from '../utils/api';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import PageContainer from './layout/PageContainer';
 
 function App() {
   const [user, setUser] = useState('sarahedo');
@@ -43,8 +44,8 @@ function App() {
 
   async function getDatafromApi() {
     setLoading(true);
-    const initialData = await API.getInitialData();
-    const { users, questions } = initialData;
+    const data = await API.getInitialData();
+    const { users, questions } = data;
 
     Object.values(users).forEach((user) => {
       user.numberOfAnswers = Object.values(user.answers).length;
@@ -66,7 +67,9 @@ function App() {
       <Navbar loggedInUser={user} setUser={setUser} users={users} />
 
       {loading ? (
-        <Spinner />
+        <PageContainer>
+          <Spinner />
+        </PageContainer>
       ) : !user ? (
         <Login setUser={setUser} users={users} />
       ) : (

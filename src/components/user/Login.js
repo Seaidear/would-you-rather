@@ -12,7 +12,7 @@ const Login = ({ users, setUser }) => {
         alt="Would you rather"
         className="img-fluid"
       />
-      <PageContainer headerText="">
+      <PageContainer>
         <form
           className="form-signin text-center"
           onSubmit={(e) => {

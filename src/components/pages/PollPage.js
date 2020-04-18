@@ -31,7 +31,7 @@ const PollPage = ({ questions, users, user, saveAnswer, match }) => {
 
   if (isQuestionAlreadyAnswered)
     return (
-      <PageContainer headerText="">
+      <PageContainer>
         <div className="card mb-3 p-3 mx-auto">
           <h3 className="card-title text-left mb-3">
             Asked by {question.authorName}

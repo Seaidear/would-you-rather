@@ -15,7 +15,7 @@ const PageContainer = ({ children, headerText }) => {
 };
 
 PageContainer.defaultProps = {
-  headerText: 'Header',
+  headerText: '',
 };
 
 PageContainer.propTypes = {
