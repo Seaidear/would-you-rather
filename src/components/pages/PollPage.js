@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, Redirect } from 'react-router-dom';
-import PageContainer from '../layout/PageContainer';
+import PageContainer from '../layout/shared/PageContainer';
 
 const PollPage = ({ questions, users, user, saveAnswer, match }) => {
   const [selectedAnswer, setSelectedAnswer] = useState('optionOne');

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './layout/Navbar';
-import Spinner from './layout/Spinner';
+import Navbar from './layout/Navbar/Navbar';
+import Spinner from './layout/shared/Spinner';
 import Home from './pages/Home';
 import PollPage from './pages/PollPage';
 import AddQuestion from './pages/AddQuestion';
@@ -12,7 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 import * as API from '../utils/api';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import PageContainer from './layout/PageContainer';
+import PageContainer from './layout/shared/PageContainer';
 
 function App() {
   const [user, setUser] = useState('sarahedo');

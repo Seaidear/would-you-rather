@@ -7,7 +7,7 @@ const UserScoreCard = ({
 }) => {
   return (
     <div className="card mb-3 p-3 mx-auto">
-      <h3 className="card-title text-center my-0">
+      <h3 className="card-title text-left my-0">
         {name} is #{placing}
       </h3>
       <div className="row no-gutters">

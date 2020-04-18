@@ -1,7 +1,7 @@
 import React from 'react';
 import UserScoreCard from '../user/UserScoreCard';
 import PropTypes from 'prop-types';
-import PageContainer from '../layout/PageContainer';
+import PageContainer from '../layout/shared/PageContainer';
 
 const Leaderboard = ({ users }) => {
   return (

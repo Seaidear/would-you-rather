@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import PageContainer from '../layout/PageContainer';
+import PageContainer from '../layout/shared/PageContainer';
 
 const AddQuestion = ({ addQuestion, history }) => {
   const [optionOneText, setOptionOneText] = useState('');

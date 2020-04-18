@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import PageContainer from '../layout/PageContainer';
+import PageContainer from '../layout/shared/PageContainer';
 
 const Login = ({ users, setUser }) => {
   const [selectedUser, setSelectedUser] = useState('');

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PollCard from '../polls/PollCard';
-import PageContainer from '../layout/PageContainer';
+import PageContainer from '../layout/shared/PageContainer';
 
 const Home = ({ questions, users, user }) => {
   const answeredQuestions = filterAndSortQuestions(
