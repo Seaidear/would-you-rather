@@ -7,7 +7,12 @@ const Home = ({ questions, users, user }) => {
   return (
     <PageContainer headerText="Poll Overview">
       <div>
-        <ul className="nav nav-tabs" id="myTab" role="tablist">
+        <ul
+          className="nav nav-tabs"
+          id="myTab"
+          role="tablist"
+          style={{ borderBottom: 'none' }}
+        >
           <li className="nav-item">
             <a
               className="nav-link active"
