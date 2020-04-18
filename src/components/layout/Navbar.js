@@ -6,14 +6,16 @@ import UserNavItem from './UserNavItem';
 const Navbar = ({ loggedInUser, setUser, users }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <Link className="navbar-brand" to="/">
-        <h1
-          className="h4 mb-0 font-weight-lighter"
-          style={{ display: 'inline-block' }}
-        >
-          WOULD YOU RATHER?
-        </h1>
-      </Link>
+      {loggedInUser !== '' && (
+        <Link className="navbar-brand" to="/">
+          <h1
+            className="h4 mb-0 font-weight-lighter"
+            style={{ display: 'inline-block' }}
+          >
+            WOULD YOU RATHER?
+          </h1>
+        </Link>
+      )}
 
       <button
         className="navbar-toggler"
