@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, Redirect } from 'react-router-dom';
 
-const Poll = ({ questions, users, user, saveAnswer, match }) => {
+const PollPage = ({ questions, users, user, saveAnswer, match }) => {
   const [selectedAnswer, setSelectedAnswer] = useState('optionOne');
 
   const question = questions[match.params.id];
@@ -167,11 +167,11 @@ const Poll = ({ questions, users, user, saveAnswer, match }) => {
     );
 };
 
-Poll.propTypes = {
+PollPage.propTypes = {
   questions: PropTypes.object.isRequired,
   users: PropTypes.object.isRequired,
   user: PropTypes.string.isRequired,
   saveAnswer: PropTypes.func.isRequired,
 };
 
-export default withRouter(Poll);
+export default withRouter(PollPage);

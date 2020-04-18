@@ -53,8 +53,6 @@ const Home = ({ questions, users, user }) => {
                 return b.timestamp - a.timestamp;
               })
               .map((question) => {
-                question.authorName = users[question.author].name;
-                question.authorAvatarURL = users[question.author].avatarURL;
                 return <PollCard key={question.id} question={question} />;
               })}
           </div>

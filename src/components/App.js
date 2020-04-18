@@ -10,7 +10,7 @@ import Login from './user/Login';
 
 import * as API from '../utils/api';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Poll from './pages/Poll';
+import PollPage from './pages/PollPage';
 
 function App() {
   const [user, setUser] = useState('sarahedo');
@@ -44,6 +44,10 @@ function App() {
       user.numberOfAnswers = Object.values(user.answers).length;
       user.numberOfQuestions = user.questions.length;
       user.score = user.numberOfQuestions + user.numberOfAnswers;
+    });
+    Object.values(questions).forEach((question) => {
+      question.authorName = users[question.author].name;
+      question.authorAvatarURL = users[question.author].avatarURL;
     });
     setUsers(users);
     setQuestions(questions);
@@ -82,7 +86,7 @@ function App() {
               exact
               path="/poll/:id"
               render={() => (
-                <Poll
+                <PollPage
                   questions={questions}
                   users={users}
                   user={user}
