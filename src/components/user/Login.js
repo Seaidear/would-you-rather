@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import PageContainer from '../layout/PageContainer';
 
 const Login = ({ users, setUser }) => {
   const [selectedUser, setSelectedUser] = useState('');
 
   return (
-    <div
-      className="text-center mx-auto mt-3 card p-3"
-      style={{ width: '65vw', minWidth: '320px', maxWidth: '768px' }}
-    >
+    <PageContainer headerText="">
       <form
-        className="form-signin"
+        className="form-signin text-center"
         onSubmit={(e) => {
           e.preventDefault();
           selectedUser
@@ -67,7 +65,7 @@ const Login = ({ users, setUser }) => {
           </button>
         </div>
       </form>
-    </div>
+    </PageContainer>
   );
 };
 

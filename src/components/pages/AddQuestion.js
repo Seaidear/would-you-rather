@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import PageContainer from '../layout/PageContainer';
 
 const AddQuestion = ({ addQuestion }) => {
   const [optionOneText, setOptionOneText] = useState('');
@@ -16,11 +17,7 @@ const AddQuestion = ({ addQuestion }) => {
   if (questionSubmitted) return <Redirect to="/" />;
 
   return (
-    <div
-      className="card p-3 mx-auto"
-      style={{ width: '65vw', minWidth: '320px', maxWidth: '768px' }}
-    >
-      <h2 className="mb-5 text-center">Create New Question</h2>
+    <PageContainer headerText="Add New Question">
       <p>
         <strong>Complete the question:</strong>
       </p>
@@ -60,7 +57,7 @@ const AddQuestion = ({ addQuestion }) => {
           Submit
         </button>
       </form>
-    </div>
+    </PageContainer>
   );
 };
 

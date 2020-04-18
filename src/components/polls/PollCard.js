@@ -8,11 +8,12 @@ const PollCard = ({ question }) => {
     <div className="card mb-3 p-3 mx-auto">
       <h3 className="card-title text-left mb-3">{question.authorName} asks:</h3>
       <div className="row no-gutters">
-        <div className="col-md-3 p-3">
+        <div className="col-md-3 p-3 text-center">
           <img
             src={question.authorAvatarURL}
             className="card-img rounded-circle"
             alt={question.authorName}
+            style={{ maxWidth: '150px', maxHeight: '150px' }}
           />
         </div>
         <div className="col-md-9">

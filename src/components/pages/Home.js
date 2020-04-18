@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PollCard from '../polls/PollCard';
+import PageContainer from '../layout/PageContainer';
 
 const Home = ({ questions, users, user }) => {
   return (
-    <div
-      className="card p-3 mx-auto"
-      style={{ width: '65vw', minWidth: '320px', maxWidth: '768px' }}
-    >
-      <h2 className="mb-5 text-center">Poll Overview</h2>
+    <PageContainer headerText="Poll Overview">
       <div>
         <ul className="nav nav-tabs" id="myTab" role="tablist">
           <li className="nav-item">
@@ -77,7 +74,7 @@ const Home = ({ questions, users, user }) => {
           </div>
         </div>
       </div>
-    </div>
+    </PageContainer>
   );
 };
 

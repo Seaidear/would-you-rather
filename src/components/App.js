@@ -57,7 +57,7 @@ function App() {
     <>
       <Navbar loggedInUser={user} setUser={setUser} users={users} />
 
-      <div className="container mt-3">
+      <div className="">
         {loading ? (
           <Spinner />
         ) : !user ? (

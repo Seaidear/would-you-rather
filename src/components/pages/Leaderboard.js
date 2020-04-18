@@ -1,14 +1,11 @@
 import React from 'react';
 import UserScoreCard from '../user/UserScoreCard';
 import PropTypes from 'prop-types';
+import PageContainer from '../layout/PageContainer';
 
 const Leaderboard = ({ users }) => {
   return (
-    <div
-      className="card p-3 mx-auto"
-      style={{ width: '65vw', minWidth: '320px', maxWidth: '768px' }}
-    >
-      <h2 className="mb-5 text-center">Leaderboard</h2>
+    <PageContainer headerText="Leaderboard">
       {Object.values(users)
         .sort((a, b) => {
           return b.score - a.score;
@@ -18,7 +15,7 @@ const Leaderboard = ({ users }) => {
             <UserScoreCard key={user.id} placing={index + 1} user={user} />
           );
         })}
-    </div>
+    </PageContainer>
   );
 };
 
