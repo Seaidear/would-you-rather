@@ -56,11 +56,7 @@ const Login = ({ users, setUser }) => {
           ))}
         </select>
         <div className="mt-3">
-          <button
-            className="btn btn-lg btn-primary btn-block"
-            type="submit"
-            // disabled={!selectedUser}
-          >
+          <button className="btn btn-lg btn-primary btn-block" type="submit">
             Sign in
           </button>
         </div>

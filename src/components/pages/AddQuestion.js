@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import PageContainer from '../layout/PageContainer';
 
-const AddQuestion = ({ addQuestion }) => {
+const AddQuestion = ({ addQuestion, history }) => {
   const [optionOneText, setOptionOneText] = useState('');
   const [optionTwoText, setOptionTwoText] = useState('');
-  const [questionSubmitted, setQuestionSubmitted] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
     addQuestion({ optionOneText, optionTwoText });
-    setQuestionSubmitted(true);
+    history.push('/');
   };
-
-  if (questionSubmitted) return <Redirect to="/" />;
 
   return (
     <PageContainer headerText="Add New Question">
@@ -65,4 +62,4 @@ AddQuestion.propTypes = {
   addQuestion: PropTypes.func.isRequired,
 };
 
-export default AddQuestion;
+export default withRouter(AddQuestion);
