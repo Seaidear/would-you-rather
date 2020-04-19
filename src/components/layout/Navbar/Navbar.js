@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import UserNavItem from './UserNavItem';
 import { NavbarToggler } from './NavbarToggler';
 import { Logo } from '../shared/Logo';
 import { NavItemsContainer } from './NavItemsContainer';
 import { NavItem } from './NavItem';
-import { LogoutButton } from './LogoutButton';
+import LogoutButton from './LogoutButton';
 
-const Navbar = ({ loggedInUser, setUser, users }) => {
+const Navbar = ({ loggedInUser, users }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       {loggedInUser !== '' && <Logo />}
@@ -16,15 +17,13 @@ const Navbar = ({ loggedInUser, setUser, users }) => {
         className="collapse navbar-collapse justify-content-end"
         id="navbarsExample04"
       >
-        {loggedInUser && (
-          <UserNavItem loggedInUser={loggedInUser} users={users} />
-        )}
+        {loggedInUser && <UserNavItem users={users} />}
         <NavItemsContainer>
           <NavItem route="/" text="Home" />
           <NavItem route="/add" text="Add Question" />
           <NavItem route="/leaderboard" text="Leaderboard" />
         </NavItemsContainer>
-        {loggedInUser && <LogoutButton setUser={setUser} />}
+        {loggedInUser && <LogoutButton />}
       </div>
     </nav>
   );
@@ -33,7 +32,10 @@ const Navbar = ({ loggedInUser, setUser, users }) => {
 Navbar.propTypes = {
   loggedInUser: PropTypes.string.isRequired,
   users: PropTypes.object,
-  setUser: PropTypes.func.isRequired,
 };
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+  loggedInUser: state.auth.user,
+});
+
+export default connect(mapStateToProps)(Navbar);

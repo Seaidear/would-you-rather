@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PollCard from '../polls/PollCard';
 import PageContainer from '../layout/shared/PageContainer';
+import { connect } from 'react-redux';
 
 const Home = ({ questions, users, user }) => {
   const answeredQuestions = filterAndSortQuestions(
@@ -84,4 +85,8 @@ const filterAndSortQuestions = (questions, filterFn) =>
     .sort((a, b) => b.timestamp - a.timestamp)
     .map((question) => <PollCard key={question.id} question={question} />);
 
-export default Home;
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+});
+
+export default connect(mapStateToProps)(Home);

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 const UserNavItem = ({ loggedInUser, users }) => {
   if (!users) return null;
@@ -33,4 +34,8 @@ UserNavItem.propTypes = {
   users: PropTypes.object,
 };
 
-export default UserNavItem;
+const mapStateToProps = (state) => ({
+  loggedInUser: state.auth.user,
+});
+
+export default connect(mapStateToProps)(UserNavItem);

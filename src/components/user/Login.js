@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { setUser } from '../../actions/auth';
 import PageContainer from '../layout/shared/PageContainer';
 
 const Login = ({ users, setUser }) => {
@@ -62,4 +64,4 @@ Login.propTypes = {
   users: PropTypes.object.isRequired,
 };
 
-export default Login;
+export default connect(null, { setUser })(Login);

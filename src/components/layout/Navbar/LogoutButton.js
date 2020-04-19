@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { setUser } from '../../../actions/auth';
+import { connect } from 'react-redux';
 
-export function LogoutButton({ setUser }) {
+function LogoutButton({ setUser }) {
   return (
     <button type="button" className="btn btn-dark" onClick={() => setUser('')}>
       Logout
@@ -12,3 +14,5 @@ export function LogoutButton({ setUser }) {
 LogoutButton.propTypes = {
   setUser: PropTypes.func.isRequired,
 };
+
+export default connect(null, { setUser })(LogoutButton);

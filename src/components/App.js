@@ -7,6 +7,7 @@ import Leaderboard from './pages/Leaderboard';
 import NotFound from './pages/NotFound';
 import Login from './user/Login';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import * as API from '../utils/api';
 
@@ -14,8 +15,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import PageContainer from './layout/shared/PageContainer';
 import MainLayout from './layout/_MainLayout';
 
-function App() {
-  const [user, setUser] = useState('sarahedo');
+function App({ user }) {
   const [users, setUsers] = useState(null);
   const [questions, setQuestions] = useState({});
   const [loading, setLoading] = useState(true);
@@ -64,21 +64,19 @@ function App() {
   }
   return (
     <>
-      <MainLayout loggedInUser={user} setUser={setUser} users={users}>
+      <MainLayout users={users}>
         {loading ? (
           <PageContainer>
             <Spinner />
           </PageContainer>
         ) : !user ? (
-          <Login setUser={setUser} users={users} />
+          <Login users={users} />
         ) : (
           <Switch>
             <Route
               exact
               path="/"
-              render={() => (
-                <Home questions={questions} users={users} user={user} />
-              )}
+              render={() => <Home questions={questions} users={users} />}
             />
             <Route
               exact
@@ -98,7 +96,6 @@ function App() {
                 <PollPage
                   questions={questions}
                   users={users}
-                  user={user}
                   saveAnswer={saveAnswer}
                 />
               )}
@@ -111,4 +108,8 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+});
+
+export default connect(mapStateToProps)(App);

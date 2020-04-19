@@ -3,10 +3,10 @@ import Navbar from './Navbar/Navbar';
 import PropTypes from 'prop-types';
 import Footer from './Footer/Footer';
 
-const MainLayout = ({ loggedInUser, setUser, users, children }) => {
+const MainLayout = ({ users, children }) => {
   return (
     <>
-      <Navbar loggedInUser={loggedInUser} setUser={setUser} users={users} />
+      <Navbar users={users} />
       <div className="full-height">{children}</div>
       <Footer />
     </>
@@ -14,9 +14,7 @@ const MainLayout = ({ loggedInUser, setUser, users, children }) => {
 };
 
 MainLayout.propTypes = {
-  loggedInUser: PropTypes.string.isRequired,
   users: PropTypes.object,
-  setUser: PropTypes.func.isRequired,
 };
 
 export default MainLayout;

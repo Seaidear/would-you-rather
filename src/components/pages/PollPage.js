@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter, Redirect } from 'react-router-dom';
 import PageContainer from '../layout/shared/PageContainer';
 import Card from '../layout/shared/Card';
+import { connect } from 'react-redux';
 
 const PollPage = ({ questions, users, user, saveAnswer, match }) => {
   const [selectedAnswer, setSelectedAnswer] = useState('optionOne');
@@ -162,4 +163,8 @@ PollPage.propTypes = {
   saveAnswer: PropTypes.func.isRequired,
 };
 
-export default withRouter(PollPage);
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+});
+
+export default withRouter(connect(mapStateToProps)(PollPage));
