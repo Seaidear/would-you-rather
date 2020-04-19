@@ -1,0 +1,4 @@
+export const SET_AUTHED_USER = 'SET_AUTHED_USER';
+export const FETCH_DATA = 'FETCH_DATA';
+export const ADD_QUESTION = 'ADD_QUESTION';
+export const ADD_QUESTION_ANSWER = 'ADD_QUESTION_ANSWER';
