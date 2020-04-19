@@ -8,7 +8,7 @@ const Login = ({ users, setUser }) => {
   return (
     <>
       <img
-        src="./img/heroImage.jpg"
+        src={`${process.env.PUBLIC_URL}/img/heroImage.jpg`}
         alt="Would you rather"
         className="img-fluid"
       />
