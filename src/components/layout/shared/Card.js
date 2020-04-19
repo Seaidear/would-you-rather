@@ -11,6 +11,7 @@ const Card = ({ children, headerText, imageURL }) => {
             src={imageURL}
             className="card-img rounded-circle"
             style={{ maxWidth: '120px', maxHeight: '120px' }}
+            alt=""
           />
         </div>
         {children}
