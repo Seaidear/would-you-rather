@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400&display=swap');
+
+body {
+  font-family: 'Lato', Helvetica, sans-serif;
+}
+
+.full-height {
+  min-height: calc(100vh - 10rem);
+}

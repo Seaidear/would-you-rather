@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './layout/Navbar/Navbar';
 import Spinner from './layout/shared/Spinner';
 import Home from './pages/Home';
 import PollPage from './pages/PollPage';
@@ -13,6 +12,7 @@ import * as API from '../utils/api';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PageContainer from './layout/shared/PageContainer';
+import MainLayout from './layout/_MainLayout';
 
 function App() {
   const [user, setUser] = useState('sarahedo');
@@ -64,49 +64,49 @@ function App() {
   }
   return (
     <>
-      <Navbar loggedInUser={user} setUser={setUser} users={users} />
+      <MainLayout loggedInUser={user} setUser={setUser} users={users}>
+        {loading ? (
+          <PageContainer>
+            <Spinner />
+          </PageContainer>
+        ) : !user ? (
+          <Login setUser={setUser} users={users} />
+        ) : (
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Home questions={questions} users={users} user={user} />
+              )}
+            />
+            <Route
+              exact
+              path="/add"
+              render={() => <AddQuestion addQuestion={addQuestion} />}
+            />
+            <Route
+              exact
+              path="/leaderboard"
+              render={() => <Leaderboard users={users} />}
+            />
 
-      {loading ? (
-        <PageContainer>
-          <Spinner />
-        </PageContainer>
-      ) : !user ? (
-        <Login setUser={setUser} users={users} />
-      ) : (
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <Home questions={questions} users={users} user={user} />
-            )}
-          />
-          <Route
-            exact
-            path="/add"
-            render={() => <AddQuestion addQuestion={addQuestion} />}
-          />
-          <Route
-            exact
-            path="/leaderboard"
-            render={() => <Leaderboard users={users} />}
-          />
-
-          <Route
-            exact
-            path="/questions/:id"
-            render={() => (
-              <PollPage
-                questions={questions}
-                users={users}
-                user={user}
-                saveAnswer={saveAnswer}
-              />
-            )}
-          />
-          <Route component={NotFound} />
-        </Switch>
-      )}
+            <Route
+              exact
+              path="/questions/:id"
+              render={() => (
+                <PollPage
+                  questions={questions}
+                  users={users}
+                  user={user}
+                  saveAnswer={saveAnswer}
+                />
+              )}
+            />
+            <Route component={NotFound} />
+          </Switch>
+        )}
+      </MainLayout>
     </>
   );
 }
