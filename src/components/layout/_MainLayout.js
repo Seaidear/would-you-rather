@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar/Navbar';
 import PropTypes from 'prop-types';
-import Footer from './Footer';
+import Footer from './Footer/Footer';
 
 const MainLayout = ({ loggedInUser, setUser, users, children }) => {
   return (
