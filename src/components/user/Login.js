@@ -8,7 +8,7 @@ const Login = ({ users, setUser }) => {
   return (
     <>
       <img
-        src="https://lifehacks.io/wp-content/uploads/Clean-Would-You-Rather-Questions-7.jpg"
+        src="./img/heroImage.jpg"
         alt="Would you rather"
         className="img-fluid"
       />
