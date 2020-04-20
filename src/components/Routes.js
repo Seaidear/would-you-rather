@@ -6,13 +6,37 @@ import Leaderboard from './pages/Leaderboard';
 import NotFound from './pages/NotFound';
 import { Switch, Route } from 'react-router-dom';
 
+const routes = [
+  {
+    exact: true,
+    path: '/',
+    component: Home,
+  },
+  {
+    exact: true,
+    path: '/add',
+    component: AddQuestion,
+  },
+  {
+    exact: true,
+    path: '/leaderboard',
+    component: Leaderboard,
+  },
+  {
+    exact: true,
+    path: '/questions/:id',
+    component: PollPage,
+  },
+  {
+    component: NotFound,
+  },
+];
+
 const Routes = () => (
   <Switch>
-    <Route exact path="/" component={Home} />
-    <Route exact path="/add" component={AddQuestion} />
-    <Route exact path="/leaderboard" component={Leaderboard} />
-    <Route exact path="/questions/:id" component={PollPage} />
-    <Route component={NotFound} />
+    {routes.map((route, index) => (
+      <Route key={index} {...route} />
+    ))}
   </Switch>
 );
 
