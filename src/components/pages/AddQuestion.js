@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import PageContainer from '../layout/shared/PageContainer';
+import { connect } from 'react-redux';
+import { addQuestion } from '../../actions/questions';
 
-const AddQuestion = ({ addQuestion, history }) => {
+const AddQuestion = ({ user, addQuestion, history }) => {
   const [optionOneText, setOptionOneText] = useState('');
   const [optionTwoText, setOptionTwoText] = useState('');
 
   const onSubmit = (e) => {
     e.preventDefault();
-    addQuestion({ optionOneText, optionTwoText });
+    addQuestion({ optionOneText, optionTwoText, author: user });
     history.push('/');
   };
 
@@ -60,6 +62,13 @@ const AddQuestion = ({ addQuestion, history }) => {
 
 AddQuestion.propTypes = {
   addQuestion: PropTypes.func.isRequired,
+  user: PropTypes.string.isRequired,
 };
 
-export default withRouter(AddQuestion);
+const mapStateToProps = (state) => ({
+  user: state.auth,
+});
+
+export default withRouter(
+  connect(mapStateToProps, { addQuestion })(AddQuestion),
+);

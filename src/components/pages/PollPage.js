@@ -4,6 +4,7 @@ import { withRouter, Redirect } from 'react-router-dom';
 import PageContainer from '../layout/shared/PageContainer';
 import Card from '../layout/shared/Card';
 import { connect } from 'react-redux';
+import { saveAnswer } from '../../actions/questions';
 
 const PollPage = ({ questions, users, user, saveAnswer, match }) => {
   const [selectedAnswer, setSelectedAnswer] = useState('optionOne');
@@ -35,8 +36,8 @@ const PollPage = ({ questions, users, user, saveAnswer, match }) => {
     return (
       <PageContainer>
         <Card
-          headerText={`Asked by ${question.authorName}`}
-          imageURL={question.authorAvatarURL}
+          headerText={`Asked by ${users[question.author].name}`}
+          imageURL={users[question.author].avatarURL}
         >
           <div className="col-md-9">
             <div className="card-body p-3">
@@ -94,8 +95,8 @@ const PollPage = ({ questions, users, user, saveAnswer, match }) => {
     return (
       <PageContainer headerText="">
         <Card
-          headerText={`${question.authorName} asks:`}
-          imageURL={question.authorAvatarURL}
+          headerText={`${users[question.author].name} asks:`}
+          imageURL={users[question.author].avatarURL}
         >
           <div className="col-md-9">
             <div className="card-body p-3">
@@ -164,7 +165,9 @@ PollPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  user: state.auth.user,
+  user: state.auth,
+  users: state.users,
+  questions: state.questions,
 });
 
-export default withRouter(connect(mapStateToProps)(PollPage));
+export default withRouter(connect(mapStateToProps, { saveAnswer })(PollPage));

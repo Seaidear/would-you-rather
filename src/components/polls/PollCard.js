@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Card from '../layout/shared/Card';
+import { connect } from 'react-redux';
 
-const PollCard = ({ question }) => {
+const PollCard = ({ question, users }) => {
   const date = new Date(question.timestamp);
   return (
     <Card
-      headerText={`${question.authorName} asks:`}
-      imageURL={question.authorAvatarURL}
+      headerText={`${users[question.author].name} asks:`}
+      imageURL={users[question.author].avatarURL}
     >
       <div className="col-md-9">
         <div className="card-body p-3">
@@ -36,6 +37,11 @@ const PollCard = ({ question }) => {
 
 PollCard.propTypes = {
   question: PropTypes.object.isRequired,
+  users: PropTypes.object.isRequired,
 };
 
-export default PollCard;
+const mapStateToProps = (state) => ({
+  users: state.users,
+});
+
+export default connect(mapStateToProps)(PollCard);

@@ -1,20 +1,15 @@
 import React from 'react';
 import Navbar from './Navbar/Navbar';
-import PropTypes from 'prop-types';
 import Footer from './Footer/Footer';
 
-const MainLayout = ({ users, children }) => {
+const MainLayout = ({ children }) => {
   return (
     <>
-      <Navbar users={users} />
+      <Navbar />
       <div className="full-height">{children}</div>
       <Footer />
     </>
   );
-};
-
-MainLayout.propTypes = {
-  users: PropTypes.object,
 };
 
 export default MainLayout;

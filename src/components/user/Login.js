@@ -64,4 +64,8 @@ Login.propTypes = {
   users: PropTypes.object.isRequired,
 };
 
-export default connect(null, { setUser })(Login);
+const mapStateToProps = (state) => ({
+  users: state.users,
+});
+
+export default connect(mapStateToProps, { setUser })(Login);

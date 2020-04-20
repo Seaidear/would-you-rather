@@ -86,7 +86,9 @@ const filterAndSortQuestions = (questions, filterFn) =>
     .map((question) => <PollCard key={question.id} question={question} />);
 
 const mapStateToProps = (state) => ({
-  user: state.auth.user,
+  user: state.auth,
+  users: state.users,
+  questions: state.questions,
 });
 
 export default connect(mapStateToProps)(Home);

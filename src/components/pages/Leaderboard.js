@@ -2,6 +2,7 @@ import React from 'react';
 import UserScoreCard from '../user/UserScoreCard';
 import PropTypes from 'prop-types';
 import PageContainer from '../layout/shared/PageContainer';
+import { connect } from 'react-redux';
 
 const Leaderboard = ({ users }) => {
   return (
@@ -23,4 +24,8 @@ Leaderboard.propTypes = {
   users: PropTypes.object.isRequired,
 };
 
-export default Leaderboard;
+const mapStateToProps = (state) => ({
+  users: state.users,
+});
+
+export default connect(mapStateToProps)(Leaderboard);

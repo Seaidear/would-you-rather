@@ -17,7 +17,7 @@ const Navbar = ({ loggedInUser, users }) => {
         className="collapse navbar-collapse justify-content-end"
         id="navbarsExample04"
       >
-        {loggedInUser && <UserNavItem users={users} />}
+        {loggedInUser && <UserNavItem />}
         <NavItemsContainer>
           <NavItem route="/" text="Home" />
           <NavItem route="/add" text="Add Question" />
@@ -35,7 +35,8 @@ Navbar.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  loggedInUser: state.auth.user,
+  loggedInUser: state.auth,
+  users: state.users,
 });
 
 export default connect(mapStateToProps)(Navbar);

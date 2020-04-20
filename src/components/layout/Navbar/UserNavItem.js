@@ -35,7 +35,8 @@ UserNavItem.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  loggedInUser: state.auth.user,
+  loggedInUser: state.auth,
+  users: state.users,
 });
 
 export default connect(mapStateToProps)(UserNavItem);
