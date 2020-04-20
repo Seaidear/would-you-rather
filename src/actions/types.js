@@ -1,4 +1,6 @@
 export const SET_AUTHED_USER = 'SET_AUTHED_USER';
-export const FETCH_DATA = 'FETCH_DATA';
+export const TOGGLE_LOADING = 'TOGGLE_LOADING';
+export const GET_USERS = 'GET_USERS';
+export const GET_QUESTIONS = 'GET_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
 export const ADD_QUESTION_ANSWER = 'ADD_QUESTION_ANSWER';
