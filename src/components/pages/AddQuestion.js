@@ -33,6 +33,7 @@ const AddQuestion = ({ user, addQuestion, history }) => {
             value={optionOneText}
             onChange={(e) => setOptionOneText(e.target.value)}
             required
+            autoFocus
           />
         </div>
 
