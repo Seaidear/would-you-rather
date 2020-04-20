@@ -57,7 +57,11 @@ const Home = ({ questions, users, user }) => {
             role="tabpanel"
             aria-labelledby="unanswered-tab"
           >
-            {unansweredQuestions}
+            {unansweredQuestions.length !== 0 ? (
+              unansweredQuestions
+            ) : (
+              <h5 className="text-center mt-5">Nothing to see here</h5>
+            )}
           </div>
           <div
             className="tab-pane fade"
@@ -65,7 +69,11 @@ const Home = ({ questions, users, user }) => {
             role="tabpanel"
             aria-labelledby="answered-tab"
           >
-            {answeredQuestions}
+            {answeredQuestions.length !== 0 ? (
+              answeredQuestions
+            ) : (
+              <h5 className="text-center mt-5">Nothing to see here</h5>
+            )}
           </div>
         </div>
       </div>
