@@ -6,13 +6,7 @@ import { getUsers } from './users';
 export const getQuestions = () => async (dispatch) => {
   dispatch(setLoading(true));
 
-  const data = await API.getInitialData();
-  const { users, questions } = data;
-
-  Object.values(questions).forEach((question) => {
-    question.authorName = users[question.author].name;
-    question.authorAvatarURL = users[question.author].avatarURL;
-  });
+  const questions = await API.getQuestions();
 
   dispatch({
     type: Types.GET_QUESTIONS,
@@ -40,8 +34,11 @@ export const addQuestion = (question) => async (dispatch) => {
 
 export const saveAnswer = ({ authedUser, qid, answer }) => async (dispatch) => {
   dispatch(setLoading(true));
+
   await API.saveQuestionAnswer({ authedUser, qid, answer });
+
   dispatch(getUsers());
   dispatch(getQuestions());
+
   dispatch(setLoading(false));
 };

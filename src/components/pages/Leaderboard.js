@@ -5,9 +5,17 @@ import PageContainer from '../layout/shared/PageContainer';
 import { connect } from 'react-redux';
 
 const Leaderboard = ({ users }) => {
+  users = Object.values(users);
+
+  users.forEach((user) => {
+    user.numberOfAnswers = Object.values(user.answers).length;
+    user.numberOfQuestions = user.questions.length;
+    user.score = user.numberOfQuestions + user.numberOfAnswers;
+  });
+
   return (
     <PageContainer headerText="Leaderboard">
-      {Object.values(users)
+      {users
         .sort((a, b) => {
           return b.score - a.score;
         })
