@@ -29,7 +29,7 @@ const UserScoreCard = ({
             <div className="text-center">
               <div
                 style={{
-                  backgroundColor: '#007bff',
+                  backgroundColor: '#127ba3',
                   width: '75px',
                   height: '75px',
                 }}
