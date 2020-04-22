@@ -7,7 +7,8 @@ import { connect } from 'react-redux';
 
 import { getUsers } from '../actions/users';
 import { getQuestions } from '../actions/questions';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import './bootstrap.min.css';
 import Routes from './Routes/Routes';
 
 const App = ({ user, loading, getUsers, getQuestions }) => {
