@@ -3,13 +3,10 @@ import Spinner from './layout/shared/Spinner';
 import Login from './user/Login';
 import PageContainer from './layout/shared/PageContainer';
 import MainLayout from './layout/_MainLayout';
+import Routes from './Routes/Routes';
 import { connect } from 'react-redux';
-
 import { getUsers } from '../actions/users';
 import { getQuestions } from '../actions/questions';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-import './bootstrap.min.css';
-import Routes from './Routes/Routes';
 
 const App = ({ user, loading, getUsers, getQuestions }) => {
   useEffect(() => {
