@@ -12,7 +12,7 @@ const Login = ({ users, setUser }) => {
       <picture>
         <source
           type="image/webp"
-          srcset={`${process.env.PUBLIC_URL}/img/heroImage.webp`}
+          srcSet={`${process.env.PUBLIC_URL}/img/heroImage.webp`}
         />
         <img
           src={`${process.env.PUBLIC_URL}/img/heroImage.jpg`}
