@@ -9,11 +9,17 @@ const Login = ({ users, setUser }) => {
 
   return (
     <>
-      <img
-        src={`${process.env.PUBLIC_URL}/img/heroImage.jpg`}
-        alt="Would you rather"
-        className="img-fluid"
-      />
+      <picture>
+        <source
+          type="image/webp"
+          srcset={`${process.env.PUBLIC_URL}/img/heroImage.webp`}
+        />
+        <img
+          src={`${process.env.PUBLIC_URL}/img/heroImage.jpg`}
+          alt="Would you rather"
+          className="img-fluid"
+        />
+      </picture>
       <PageContainer>
         <form
           className="form-signin text-center"
