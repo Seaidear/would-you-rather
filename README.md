@@ -4,7 +4,7 @@ This is an implementation of the popular "Would you rather..."-game. It uses Rea
 
 This application was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Visit the [Create React App documentation](https://facebook.github.io/create-react-app/docs/) for more information about the bootstrapping process and scripts create-react-app offers.
 
-You can check out the live project by clicking [here](https://stupefied-archimedes-027423.netlify.app/).
+You can check out the live project by clicking [here](https://would-you-rather-2020.netlify.app/).
 
 ## Features
 
