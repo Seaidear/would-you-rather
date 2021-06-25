@@ -23,31 +23,31 @@ const Home = ({ questions, users, user }) => {
           role="tablist"
           style={{ borderBottom: 'none' }}
         >
-          <li className="nav-item">
-            <a
+          <li className="nav-item" role="presentation">
+            <button
               className="nav-link active"
               id="unanswered-tab"
-              data-toggle="tab"
-              href="#unanswered"
+              data-bs-toggle="tab"
+              data-bs-target="#unanswered"
               role="tab"
               aria-controls="unanswered"
               aria-selected="true"
             >
               Unanswered
-            </a>
+            </button>
           </li>
-          <li className="nav-item">
-            <a
+          <li className="nav-item" role="presentation">
+            <button
               className="nav-link"
               id="answered-tab"
-              data-toggle="tab"
-              href="#answered"
+              data-bs-toggle="tab"
+              data-bs-target="#answered"
               role="tab"
               aria-controls="answered"
               aria-selected="false"
             >
               Answered
-            </a>
+            </button>
           </li>
         </ul>
         <div className="tab-content" id="myTabContent">
