@@ -8,22 +8,24 @@ import { NavItemsContainer } from './NavItemsContainer';
 import { NavItem } from './NavItem';
 import LogoutButton from './LogoutButton';
 
-const Navbar = ({ loggedInUser, users }) => {
+const Navbar = ({ loggedInUser }) => {
+  if (!loggedInUser) return null;
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      {loggedInUser !== '' && <Logo />}
+      <Logo />
       <NavbarToggler />
       <div
         className="collapse navbar-collapse justify-content-end"
         id="navbarsExample04"
       >
-        {loggedInUser && <UserNavItem />}
+        <UserNavItem />
         <NavItemsContainer>
           <NavItem route="/" text="Home" />
           <NavItem route="/add" text="Add Question" />
           <NavItem route="/leaderboard" text="Leaderboard" />
         </NavItemsContainer>
-        {loggedInUser && <LogoutButton />}
+        <LogoutButton />
       </div>
     </nav>
   );
