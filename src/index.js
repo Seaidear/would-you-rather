@@ -8,7 +8,6 @@ import './bootstrap.min.css';
 import 'jquery';
 import 'popper.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
-import * as serviceWorker from './serviceWorker';
 
 import './index.css';
 
@@ -23,5 +22,3 @@ render(
 
   document.getElementById('root'),
 );
-
-serviceWorker.register();
