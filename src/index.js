@@ -17,6 +17,5 @@ render(
       </Router>
     </Provider>
   </React.StrictMode>,
-
   document.getElementById('root'),
 );
